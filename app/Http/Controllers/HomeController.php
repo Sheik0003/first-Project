@@ -73,7 +73,4 @@ public function apilogin(Request $request)
         ]);
     }
 
-// 
-
-
 }
