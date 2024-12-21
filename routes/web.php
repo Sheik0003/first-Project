@@ -33,8 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/app-settings', AppSettingController::class);
     Route::get('/message', [MessageController::class, 'index'])->name('message');
     Route::post('/message', [MessageController::class, 'store'])->name('message.store');
-
+   
 });
+Route::get('/read',[MessageController::class, 'read']);
 
 Route::fallback(function () {
     return redirect()->guest(route('login'))->with('error', 'Please log in.');

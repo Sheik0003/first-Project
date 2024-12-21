@@ -67,5 +67,27 @@ class MessageController extends Controller
         return back()->with('error', 'An error occurred: ' . $e->getMessage());
     }
 }
+
+public function read()
+{
+    $allMessages = MessageModel::all();
+    $parsedData = []; 
+
+    foreach ($allMessages as $message) {
+        if (!empty($message->json)) {
+            $decodedJson = json_decode($message->json, true);
+
+            if (is_array($decodedJson)) {
+                foreach ($decodedJson as $value) {
+                    $parsedData[] = [reset($value)];
+                }
+            }
+        }
+    }
+
+    return response()->json($parsedData);
+}
+
+
         
 }
