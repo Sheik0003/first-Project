@@ -29,9 +29,6 @@ class MessageController extends Controller
         $existingRecord = MessageModel::latest()->first();
         
         if ($existingRecord) {
-            if (!empty($existingRecord->image) && file_exists(public_path($existingRecord->image))) {
-                unlink(public_path($existingRecord->image)); 
-            }
             $existingRecord->delete();
         }
 

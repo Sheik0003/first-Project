@@ -16,6 +16,12 @@ class AppSettingController extends Controller
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        $existingRecord = AppSetting::latest()->first();
+        
+        if ($existingRecord) {
+            $existingRecord->delete();
+        }
+
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
