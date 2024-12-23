@@ -51,26 +51,26 @@ class HomeController extends Controller
         return view('dashboard.index', compact('appSetting'));
     }
 
-// API ROUTER: 
-// Login:
-public function apilogin(Request $request)
-    {
-        $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
+// // API ROUTER: 
+// // Login:
+// public function apilogin(Request $request)
+//     {
+//         $request->validate([
+//             'username' => 'required|string',
+//             'password' => 'required|string',
+//         ]);
 
-        $user = User::where('username', $request->username)->first();
+//         $user = User::where('username', $request->username)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['error' => 'Invalid username or password']);
-        }
+//         if (!$user || !Hash::check($request->password, $user->password)) {
+//             return response()->json(['error' => 'Invalid username or password']);
+//         }
 
-        $token = $user->createToken('API Token')->plainTextToken;
+//         $token = $user->createToken('API Token')->plainTextToken;
 
-        return response()->json([
-            'token' => $token,
-        ]);
-    }
+//         return response()->json([
+//             'token' => $token,
+//         ]);
+//     }
 
 }

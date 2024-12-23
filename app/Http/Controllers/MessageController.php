@@ -84,7 +84,5 @@ public function read()
 
     return response()->json($parsedData);
 }
-
-
         
 }
