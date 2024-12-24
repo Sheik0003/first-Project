@@ -124,9 +124,9 @@
         @yield('content')
     </div>
 
-    <!-- <a href="https://wa.me/9360422493?text=Hi%20there!" target="_blank" class="btn btn-success whatsapp-button">
+    <a href="https://wa.me/9360422493?text=Hi%20there!" target="_blank" class="btn btn-success whatsapp-button">
         <i class="fa fa-whatsapp"></i> Contact Us on WhatsApp
-    </a> -->
+    </a>
 
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
