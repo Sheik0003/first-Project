@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppSettingController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\WhatsAppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/app-settings', AppSettingController::class);
     Route::get('/message', [MessageController::class, 'index'])->name('message');
     Route::post('/message', [MessageController::class, 'store'])->name('message.store');
-   
+    Route::get('/send-whatsapp', [WhatsAppController::class, 'send']);
+
 });
 Route::get('/read',[MessageController::class, 'read']);
 

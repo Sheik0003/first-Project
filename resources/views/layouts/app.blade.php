@@ -21,6 +21,7 @@
             top: 0;
             bottom: 0;
             padding-top: 20px;
+            overflow-y: auto;
         }
 
         .sidebar a {
@@ -29,6 +30,7 @@
             padding: 12px 20px;
             text-decoration: none;
             font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
         .sidebar a:hover {
@@ -42,7 +44,7 @@
         .content {
             margin-left: 300px;
             padding: 20px;
-            width: 100%;
+            width: calc(100% - 300px);
         }
 
         .navbar {
@@ -84,6 +86,13 @@
             color: white;
             font-weight: bold;
         }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
     </style>
 </head>
 
@@ -91,9 +100,9 @@
     <div class="sidebar">
         <div class="text-center mb-4">
             @if(isset($appSetting) && $appSetting->logo)
-            <img src="{{ url($appSetting->logo) }}" alt="Logo" class="logo">
+                <img src="{{ url($appSetting->logo) }}" alt="Logo" class="logo">
             @else
-            <img src="{{ url('Downloads/1733375943_675137c7ad063.jpg') }}" alt="Logo" class="logo">
+                <img src="{{ url('Downloads/1733375943_675137c7ad063.jpg') }}" alt="Logo" class="logo">
             @endif
         </div>
         <a href="{{ route('dashboard.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'active' : '' }}">Settings</a>
@@ -114,6 +123,10 @@
 
         @yield('content')
     </div>
+
+    <!-- <a href="https://wa.me/9360422493?text=Hi%20there!" target="_blank" class="btn btn-success whatsapp-button">
+        <i class="fa fa-whatsapp"></i> Contact Us on WhatsApp
+    </a> -->
 
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
